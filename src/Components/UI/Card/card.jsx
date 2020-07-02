@@ -15,6 +15,13 @@ import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
 import ReactMapGL, { Marker, GeolocateControl } from "react-map-gl";
 import PolylineOverlay from "../Card/overlay.jsx";
 
+import MapImage from "../../../Assets/map.svg";
+import ThunderImage from "../../../Assets/thunder.svg";
+import CloudSunImage from "../../../Assets/cloud-sun.svg";
+import RainImage from "../../../Assets/rain.svg";
+import CloudyNew from "../../../Assets/cloudynew.svg";
+import Drizzle from "../../../Assets/drizzle.svg";
+
 import "./card.css";
 
 //Checks Weather
@@ -23,17 +30,17 @@ function weatherCheck(id) {
     case "18":
     case "28":
     case "9":
-      return "/Images/thunder.svg";
+      return ThunderImage;
 
     case "10":
     case "20":
-      return "/Images/cloudynew.svg";
+      return CloudyNew;
     case "22":
-      return "/Images/drizzle.svg";
+      return Drizzle;
     case "21":
     case "23":
     case "24":
-      return "/Images/rain.svg";
+      return RainImage;
 
     case "1":
     case "11":
@@ -45,7 +52,7 @@ function weatherCheck(id) {
     case "33":
     case "34":
     case "35":
-      return "/Images/cloud-sun.svg";
+      return CloudSunImage;
     default:
       return "No ID found";
   }
@@ -311,7 +318,7 @@ function Card(props) {
                   zoom={mapInfo.zoom}
                 >
                   <img
-                    src="/Images/map.svg"
+                    src={MapImage}
                     alt="Destination"
                     height="20px"
                     width="20px"
