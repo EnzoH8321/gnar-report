@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Cloudy</title><g id="Cloudy"><path d="M15.5,14a.5.5,0,0,1-.5-.5.56.56,0,0,1,.68-.48l.19,0a.49.49,0,0,0,.45-.22.5.5,0,0,0,0-.5,6,6,0,0,0-9.58-1.55.5.5,0,0,0,.14.8,5.39,5.39,0,0,1,1,.63.5.5,0,0,1,.08.7.44.44,0,0,1-.7.08A4.5,4.5,0,1,0,4.5,21h11a3.5,3.5,0,0,0,0-7Z" style="fill:#303c42"/><path d="M19,7a5,5,0,0,0-2.79.85.51.51,0,0,1-.69-.14A.5.5,0,0,1,15.65,7a5.89,5.89,0,0,1,1.13-.58A.5.5,0,0,0,17,5.67,7,7,0,0,0,4.54,9.28a4,4,0,0,0-1.42,1,.5.5,0,0,0,.45.84A5.23,5.23,0,0,1,4.95,11a.48.48,0,0,0,.44-.2,7,7,0,0,1,12.44,2.67.5.5,0,0,0,.21.31,4.5,4.5,0,0,1,1.82,2.6.5.5,0,0,0,.48.38l.15,0A5,5,0,0,0,19,7Z" style="fill:#303c42"/></g>
+	<metadata>
+		<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+			<rdf:Description about="https://iconscout.com/legal#licenses" dc:title="weather; forcast" dc:description="weather; forcast" dc:publisher="Iconscout" dc:date="2017-02-21" dc:format="image/svg+xml" dc:language="en">
+				<dc:creator>
+					<rdf:Bag>
+						<rdf:li>Alpár - Etele Méder</rdf:li>
+					</rdf:Bag>
+				</dc:creator>
+			</rdf:Description>
+		</rdf:RDF>
+    </metadata></svg>
