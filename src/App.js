@@ -163,7 +163,7 @@ function App() {
     async function fetchData() {
       try {
         const proxyURL = "https://morning-refuge-88650.herokuapp.com/";
-        const realURL = `http://magicseaweed.com/api/0caa0348eefdd152237d5cf143d22e35/forecast/?spot_id=${spotID.id}&units=us`;
+        const realURL = `http://magicseaweed.com/api/${process.env.REACT_APP_MSW}/forecast/?spot_id=${spotID.id}&units=us`;
         const data = await fetch(proxyURL + realURL);
         const response = await data.json();
 

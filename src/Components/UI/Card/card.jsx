@@ -16,7 +16,6 @@ import ReactMapGL, { Marker, GeolocateControl } from "react-map-gl";
 import PolylineOverlay from "../Card/overlay.jsx";
 
 import "./card.css";
-import { blue } from "@material-ui/core/colors";
 
 //Checks Weather
 function weatherCheck(id) {
@@ -252,7 +251,7 @@ function Card(props) {
       longitude: pushMap.longitude,
       width: "100%",
       height: "100%",
-      zoom: 12,
+      zoom: 10,
     });
   }, [pushMap.latitude, pushMap.longitude]);
 
