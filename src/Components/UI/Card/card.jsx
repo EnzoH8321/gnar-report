@@ -311,7 +311,7 @@ function Card(props) {
                   zoom={mapInfo.zoom}
                 >
                   <img
-                    src="/Images/map.svg"
+                    src="../Images/map.svg"
                     alt="Destination"
                     height="20px"
                     width="20px"
@@ -574,7 +574,7 @@ function Card(props) {
               <p>{pushTimespot4}</p>
               <img
                 src={weatherCheck(pushConditionRating4)}
-                alt="sun"
+                alt=""
                 height="100px"
                 width="100px"
               ></img>
