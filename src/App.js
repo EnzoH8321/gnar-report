@@ -301,11 +301,11 @@ function App() {
       <Grid container spacing={2}>
         <Header onHeaderChange={searchCallBackFunction} />
         {/* If latitude is false, do not display body  */}
-        {/* {mapInfo.latitude ? ( */}
-        <Body pushSurfSpot={surfSpot} pushMapInfo={mapInfo} />
-        {/* ) : (
+        {mapInfo.latitude ? (
+          <Body pushSurfSpot={surfSpot} pushMapInfo={mapInfo} />
+        ) : (
           <div></div>
-        )} */}
+        )}
       </Grid>
     </div>
   );
