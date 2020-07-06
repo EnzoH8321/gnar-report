@@ -20,7 +20,6 @@ function getHours(time) {
       : dateObject.getHours();
 
   var am_pm = dateObject.getHours() >= 12 ? "PM" : "AM";
-  // hours = hours < 10 ? "0" + hours : hours;
 
   return `${hours} ${am_pm}`;
 }
@@ -36,7 +35,7 @@ function getDayMonth(time) {
 
   const month = dateObject.getMonth();
 
-  //When it hit's January
+  //When it hit's January, force the date to use '1' instead of '0'
   if (month === 0) {
     return `1/${day}`;
   }
