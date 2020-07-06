@@ -7,7 +7,7 @@ import "./body.css";
 function Body(props) {
   const { pushSurfSpot, pushMapInfo } = props;
 
-  return <Card pushDayMonth={pushSurfSpot.dayMonth} pushMap={pushMapInfo} />;
+  return <Card pushDayMonth={pushSurfSpot.dayMonth} pushMap={pushMapInfo}  />;
 }
 
 export default Body;

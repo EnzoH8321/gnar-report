@@ -24,6 +24,25 @@ import Drizzle from "../../../Assets/drizzle.svg";
 
 import "./card.css";
 
+//Get's Time
+function getHours(time) {
+  const unixTimestamp = time;
+
+  const milliseconds = unixTimestamp * 1000;
+
+  const dateObject = new Date(milliseconds);
+
+  var hours =
+    dateObject.getHours() > 12
+      ? dateObject.getHours() - 12
+      : dateObject.getHours();
+
+  var am_pm = dateObject.getHours() >= 12 ? "PM" : "AM";
+  // hours = hours < 10 ? "0" + hours : hours;
+
+  return `${hours} ${am_pm}`;
+}
+
 //Checks Weather
 function weatherCheck(id) {
   switch (id) {
@@ -97,9 +116,8 @@ function rotateWindArrow(degrees) {
 
 //Creates Card
 function Card(props) {
-  const { pushMap } = props;
-
-  const { surfSpotInfo } = props;
+  //State
+  const { pushMap, surfSpotInfo } = props;
 
   console.log(surfSpotInfo);
 
@@ -157,6 +175,7 @@ function Card(props) {
     pushMap.latitude,
   ]);
 
+  //Sets user Location
   useEffect(() => {
     setMapInfo({
       latitude: pushMap.latitude,
@@ -245,7 +264,7 @@ function Card(props) {
         >
           <Grid item xs={12} style={{}}>
             <h1>Surf Report</h1>
-            <h3>{pushDayMonth}</h3>
+            <h3>{surfSpotInfo.dayMonth}</h3>
           </Grid>
 
           {/* First Cell */}
@@ -257,14 +276,14 @@ function Card(props) {
             className="Card-Item"
           >
             <Grid item xs={4}>
-              <p>{pushTimespot}</p>
+              <p>{getHours(surfSpotInfo[4].localTimestamp)}</p>
               <img
-                src={weatherCheck(pushConditionRating)}
+                src={weatherCheck(surfSpotInfo[4].condition.weather)}
                 alt=""
                 height="100px"
                 width="100px"
               ></img>
-              <p>{pushTemp + "f"}</p>
+              <p>{surfSpotInfo[4].condition.temperature + "f"}</p>
             </Grid>
             <Grid container item xs={8}>
               <Grid item xs={12}>

@@ -7,23 +7,7 @@ import Body from "./Components/Layout/Body/body.jsx";
 
 import "./App.css";
 
-function getHours(time) {
-  const unixTimestamp = time;
 
-  const milliseconds = unixTimestamp * 1000;
-
-  const dateObject = new Date(milliseconds);
-
-  var hours =
-    dateObject.getHours() > 12
-      ? dateObject.getHours() - 12
-      : dateObject.getHours();
-
-  var am_pm = dateObject.getHours() >= 12 ? "PM" : "AM";
-  // hours = hours < 10 ? "0" + hours : hours;
-
-  return `${hours} ${am_pm}`;
-}
 
 function getDayMonth(time) {
   const unixTimestamp = time;
