@@ -117,7 +117,7 @@ function rotateWindArrow(degrees) {
 //Creates Card
 function Card(props) {
   //State
-  const { pushMap, surfSpotInfo } = props;
+  const { pushMap, surfSpotInfo, pushDayMonth } = props;
 
   console.log(surfSpotInfo);
 
@@ -290,34 +290,43 @@ function Card(props) {
                 <List>
                   <ListItem>
                     <ListItemText
-                      primary={`${pushMinHeight}-${pushMaxHeight}${pushUnit}`}
+                      primary={`${surfSpotInfo[4].swell.components.minBreakingHeight}-${surfSpotInfo[4].swell.components.maxBreakingHeight}${surfSpotInfo[4].swell.components.unit}`}
                       style={{ float: "left" }}
                     />
-                    {createStars(pushSolidRating, pushFadedRating)}
+                    {createStars(
+                      surfSpotInfo[4].solidRating,
+                      surfSpotInfo[4].fadedRating
+                    )}
                   </ListItem>
                   <ListItem>
                     <ListItemText primary="Primary Swell" />
                     <ListItemText
-                      primary={`${pushPrimaryHeight}ft at ${pushPrimaryPeriod}s`}
+                      primary={`${surfSpotInfo[4].components.primary.height}ft at ${surfSpotInfo[4].components.primary.period}s`}
                     />
                     <ListItemIcon>
-                      {rotateSwellArrow(pushPrimaryDirection)}
+                      {rotateSwellArrow(
+                        surfSpotInfo[4].components.primary.direction
+                      )}
                     </ListItemIcon>
                   </ListItem>
                   <ListItem>
                     <ListItemText primary="Secondary Swell"></ListItemText>
                     <ListItemText
-                      primary={`${pushSecondaryHeight}ft at ${pushSecondaryPeriod}s`}
+                      primary={`${surfSpotInfo[4].components.secondary.height}ft at ${surfSpotInfo[4].components.secondary.period}s`}
                     />
                     <ListItemIcon>
-                      {rotateSwellArrow(pushSecondaryDirection)}
+                      {rotateSwellArrow(
+                        surfSpotInfo[4].components.secondary.direction
+                      )}
                     </ListItemIcon>
                   </ListItem>
                   <ListItem>
                     <ListItemText primary="Wind Direction" />
-                    <ListItemText primary={`${pushWindSpeed}${pushWindUnit}`} />
+                    <ListItemText
+                      primary={`${surfSpotInfo[4].wind.speed}${surfSpotInfo[4].wind.unit}`}
+                    />
                     <ListItemIcon>
-                      {rotateWindArrow(pushWindDirection)}
+                      {rotateWindArrow(surfSpotInfo[4].wind.direction)}
                     </ListItemIcon>
                   </ListItem>
                 </List>
@@ -334,48 +343,57 @@ function Card(props) {
             className="Card-Item"
           >
             <Grid item xs={4}>
-              <p>{pushTimespot1}</p>
+              <p>{getHours(surfSpotInfo[5].localTimestamp)}</p>
               <img
-                src={weatherCheck(pushConditionRating1)}
+                src={weatherCheck(surfSpotInfo[5].condition.weather)}
                 alt=""
                 height="100px"
                 width="100px"
               ></img>
-              <p>{pushTemp1 + "f"}</p>
+              <p>{surfSpotInfo[5].condition.temperature + "f"}</p>
             </Grid>
             <Grid container item xs={8}>
               <Grid item xs={12}>
                 <List>
                   <ListItem>
                     <ListItemText
-                      primary={`${pushMinHeight1}-${pushMaxHeight1}${pushUnit1}`}
+                      primary={`${surfSpotInfo[5].swell.components.minBreakingHeight}-${surfSpotInfo[5].swell.components.maxBreakingHeight}${surfSpotInfo[5].swell.components.unit}`}
                       style={{ float: "left" }}
                     />
-                    {createStars(pushSolidRating1, pushFadedRating1)}
+                    {createStars(
+                      surfSpotInfo[5].solidRating,
+                      surfSpotInfo[5].fadedRating
+                    )}
                   </ListItem>
                   <ListItem>
                     <ListItemText primary="Primary Swell" />
                     <ListItemText
-                      primary={`${pushPrimaryHeight1}ft at ${pushPrimaryPeriod1}s`}
+                      primary={`${surfSpotInfo[5].components.primary.height}ft at ${surfSpotInfo[5].components.primary.period}s`}
                     />
                     <ListItemIcon>
-                      {rotateSwellArrow(pushPrimaryDirection1)}
+                      {rotateSwellArrow(
+                        surfSpotInfo[5].components.primary.direction
+                      )}
                     </ListItemIcon>
                   </ListItem>
                   <ListItem>
                     <ListItemText primary="Secondary Swell" />
                     <ListItemText
-                      primary={`${pushSecondaryHeight1}ft at ${pushSecondaryPeriod1}s `}
+                      primary={`${surfSpotInfo[5].components.secondary.height}ft at ${surfSpotInfo[5].components.secondary.period}s `}
                     />
                     <ListItemIcon>
-                      {rotateSwellArrow(pushSecondaryDirection1)}
+                      {rotateSwellArrow(
+                        surfSpotInfo[5].components.secondary.direction
+                      )}
                     </ListItemIcon>
                   </ListItem>
                   <ListItem>
                     <ListItemText primary="Wind Direction" />
-                    <ListItemText primary={`${pushWindSpeed1}mph`} />
+                    <ListItemText
+                      primary={`${surfSpotInfo[5].wind.speed}mph`}
+                    />
                     <ListItemIcon>
-                      {rotateWindArrow(pushWindDirection1)}
+                      {rotateWindArrow(surfSpotInfo[5].wind.direction)}
                     </ListItemIcon>
                   </ListItem>
                 </List>
@@ -392,48 +410,57 @@ function Card(props) {
             className="Card-Item"
           >
             <Grid item xs={4}>
-              <p>{pushTimespot2}</p>
+              <p>{getHours(surfSpotInfo[6].localTimestamp)}</p>
               <img
-                src={weatherCheck(pushConditionRating2)}
+                src={weatherCheck(surfSpotInfo[6].condition.weather)}
                 alt=""
                 height="100px"
                 width="100px"
               ></img>
-              <p>{pushTemp2 + "f"}</p>
+              <p>{surfSpotInfo[6].condition.temperature + "f"}</p>
             </Grid>
             <Grid container item xs={8}>
               <Grid item xs={12}>
                 <List>
                   <ListItem>
                     <ListItemText
-                      primary={`${pushMinHeight2}-${pushMaxHeight2}${pushUnit2}`}
+                      primary={`${surfSpotInfo[6].swell.components.minBreakingHeight}-${surfSpotInfo[6].swell.components.maxBreakingHeight}ft`}
                       style={{ float: "left" }}
                     />
-                    {createStars(pushSolidRating2, pushFadedRating2)}
+                    {createStars(
+                      surfSpotInfo[6].solidRating,
+                      surfSpotInfo[6].fadedRating
+                    )}
                   </ListItem>
                   <ListItem>
                     <ListItemText primary="Primary Swell" />
                     <ListItemText
-                      primary={`${pushPrimaryHeight2}ft at ${pushPrimaryPeriod2}s `}
+                      primary={`${surfSpotInfo[6].swell.components.primary.height}ft at ${surfSpotInfo[6].swell.components.primary.period}s `}
                     />
                     <ListItemIcon>
-                      {rotateSwellArrow(pushPrimaryDirection2)}
+                      {rotateSwellArrow(
+                        surfSpotInfo[6].components.primary.direction
+                      )}
                     </ListItemIcon>
                   </ListItem>
                   <ListItem>
                     <ListItemText primary="Secondary Swell" />
                     <ListItemText
-                      primary={`${pushSecondaryHeight2}ft at ${pushSecondaryPeriod2}s`}
+                      primary={`${surfSpotInfo[6].swell.components.secondary.height}ft at ${surfSpotInfo[6].swell.components.secondary.period}s`}
                     />
                     <ListItemIcon>
-                      {rotateSwellArrow(pushSecondaryDirection2)}
+                      {rotateSwellArrow(
+                        surfSpotInfo[6].components.secondary.direction
+                      )}
                     </ListItemIcon>
                   </ListItem>
                   <ListItem>
                     <ListItemText primary="Wind Direction" />
-                    <ListItemText primary={`${pushWindSpeed2}mph`} />
+                    <ListItemText
+                      primary={`${surfSpotInfo[6].wind.speed}mph`}
+                    />
                     <ListItemIcon>
-                      {rotateWindArrow(pushWindDirection2)}
+                      {rotateWindArrow(surfSpotInfo[6].wind.direction)}
                     </ListItemIcon>
                   </ListItem>
                 </List>
@@ -450,48 +477,57 @@ function Card(props) {
             className="Card-Item"
           >
             <Grid item xs={4}>
-              <p>{pushTimespot3}</p>
+              <p>{getHours(surfSpotInfo[7].localTimestamp)}</p>
               <img
-                src={weatherCheck(pushConditionRating3)}
+                src={weatherCheck(surfSpotInfo[7].condition.weather)}
                 alt=""
                 height="100px"
                 width="100px"
               ></img>
-              <p>{pushTemp3 + "f"}</p>
+              <p>{surfSpotInfo[7].condition.temperature + "f"}</p>
             </Grid>
             <Grid container item xs={8}>
               <Grid item xs={12}>
                 <List>
                   <ListItem>
                     <ListItemText
-                      primary={`${pushMinHeight3}-${pushMaxHeight3}ft`}
+                      primary={`${surfSpotInfo[7].swell.components.minBreakingHeight}-${surfSpotInfo[7].swell.components.maxBreakingHeight}ft`}
                       style={{ float: "left" }}
                     ></ListItemText>
-                    {createStars(pushSolidRating3, pushFadedRating3)}
+                    {createStars(
+                      surfSpotInfo[7].solidRating,
+                      surfSpotInfo[7].fadedRating
+                    )}
                   </ListItem>
                   <ListItem>
                     <ListItemText primary="Primary Swell" />
                     <ListItemText
-                      primary={`${pushPrimaryHeight3}ft at ${pushPrimaryPeriod3}s`}
+                      primary={`${surfSpotInfo[7].swell.components.primary.height}ft at ${surfSpotInfo[7].swell.components.primary.period}s`}
                     />
                     <ListItemIcon>
-                      {rotateSwellArrow(pushPrimaryDirection3)}
+                      {rotateSwellArrow(
+                        surfSpotInfo[7].components.primary.direction
+                      )}
                     </ListItemIcon>
                   </ListItem>
                   <ListItem>
                     <ListItemText primary="Secondary Swell" />
                     <ListItemText
-                      primary={`${pushSecondaryHeight3}ft at ${pushSecondaryPeriod3}s`}
+                      primary={`${surfSpotInfo[7].swell.components.secondary.direction}ft at ${surfSpotInfo[7].swell.components.secondary.period}s`}
                     />
                     <ListItemIcon>
-                      {rotateSwellArrow(pushSecondaryDirection3)}
+                      {rotateSwellArrow(
+                        surfSpotInfo[7].components.secondary.direction
+                      )}
                     </ListItemIcon>
                   </ListItem>
                   <ListItem>
                     <ListItemText primary="Wind Direction" />
-                    <ListItemText primary={`${pushWindSpeed3}mph`} />
+                    <ListItemText
+                      primary={`${surfSpotInfo[7].wind.speed}mph`}
+                    />
                     <ListItemIcon>
-                      {rotateWindArrow(pushWindDirection3)}
+                      {rotateWindArrow(surfSpotInfo[7].wind.direction)}
                     </ListItemIcon>
                   </ListItem>
                 </List>
@@ -502,49 +538,58 @@ function Card(props) {
           {/* Fifth Cell */}
           <Grid container item xs={12} style={{}} className="Card-Item">
             <Grid item xs={6}>
-              <p>{pushTimespot4}</p>
+              <p>{getHours(surfSpotInfo[8].localTimestamp)}</p>
               <img
-                src={weatherCheck(pushConditionRating4)}
+                src={weatherCheck(surfSpotInfo[8].condition.weather)}
                 alt=""
                 height="100px"
                 width="100px"
               ></img>
-              <p>{pushTemp4 + "f"}</p>
+              <p>{surfSpotInfo[8].condition.temperature + "f"}</p>
             </Grid>
             <Grid container item xs={6}>
               <Grid item xs={12}>
                 <List>
                   <ListItem>
                     <ListItemText
-                      primary={`${pushMinHeight4}-${pushMaxHeight4}ft`}
+                      primary={`${surfSpotInfo[8].swell.components.minBreakingHeight}-${surfSpotInfo[8].swell.components.maxBreakingHeight}ft`}
                       style={{ float: "left" }}
                     ></ListItemText>
-                    {createStars(pushSolidRating4, pushFadedRating4)}
+                    {createStars(
+                      surfSpotInfo[8].solidRating,
+                      surfSpotInfo[8].fadedRating
+                    )}
                   </ListItem>
                   <ListItem>
                     <ListItemText primary="Primary Swell" />
                     <ListItemText
-                      primary={`${pushPrimaryHeight4}ft at ${pushPrimaryPeriod4}s`}
+                      primary={`${surfSpotInfo[8].swell.components.primary.direction}ft at ${surfSpotInfo[8].swell.components.primary.period}s`}
                     />
                     <ListItemIcon>
-                      {rotateSwellArrow(pushPrimaryDirection4)}
+                      {rotateSwellArrow(
+                        surfSpotInfo[8].components.primary.direction
+                      )}
                     </ListItemIcon>
                   </ListItem>
                   <ListItem>
                     <ListItemText primary="Secondary Swell" />
                     <ListItemText
-                      primary={`${pushSecondaryHeight4}ft at ${pushSecondaryPeriod4}s`}
+                      primary={`${surfSpotInfo[8].swell.components.secondary.direction}ft at ${surfSpotInfo[8].swell.components.secondary.period}s`}
                     />
                     <ListItemIcon>
-                      {rotateSwellArrow(pushSecondaryDirection4)}
+                      {rotateSwellArrow(
+                        surfSpotInfo[8].components.secondary.direction
+                      )}
                     </ListItemIcon>
                   </ListItem>
 
                   <ListItem>
                     <ListItemText primary="Wind Direction" />
-                    <ListItemText primary={`${pushWindSpeed4}mph`} />
+                    <ListItemText
+                      primary={`${surfSpotInfo[8].wind.speed}mph`}
+                    />
                     <ListItemIcon>
-                      {rotateWindArrow(pushWindDirection4)}
+                      {rotateWindArrow(surfSpotInfo[8].wind.direction)}
                     </ListItemIcon>
                   </ListItem>
                 </List>
