@@ -289,7 +289,7 @@ function Card(props) {
         >
           <Grid item xs={12} style={{}}>
             <h1>Surf Report</h1>
-            <h3>{surfSpotInfo.dayMonth}</h3>
+            <h3>{getDayMonth(surfSpotInfo[4].localTimestamp)}</h3>
           </Grid>
 
           {/* First Cell */}
@@ -315,7 +315,7 @@ function Card(props) {
                 <List>
                   <ListItem>
                     <ListItemText
-                      primary={`${surfSpotInfo[4].swell.minBreakingHeight}-${surfSpotInfo[4].swell.maxBreakingHeight}${surfSpotInfo[4].swell.components.unit}`}
+                      primary={`${surfSpotInfo[4].swell.minBreakingHeight}-${surfSpotInfo[4].swell.maxBreakingHeight}ft`}
                       style={{ float: "left" }}
                     />
                     {createStars(
@@ -382,7 +382,7 @@ function Card(props) {
                 <List>
                   <ListItem>
                     <ListItemText
-                      primary={`${surfSpotInfo[5].swell.components.minBreakingHeight}-${surfSpotInfo[5].swell.components.maxBreakingHeight}${surfSpotInfo[5].swell.components.unit}`}
+                      primary={`${surfSpotInfo[5].swell.minBreakingHeight}-${surfSpotInfo[5].swell.maxBreakingHeight}ft`}
                       style={{ float: "left" }}
                     />
                     {createStars(
@@ -449,7 +449,7 @@ function Card(props) {
                 <List>
                   <ListItem>
                     <ListItemText
-                      primary={`${surfSpotInfo[6].swell.components.minBreakingHeight}-${surfSpotInfo[6].swell.components.maxBreakingHeight}ft`}
+                      primary={`${surfSpotInfo[6].swell.minBreakingHeight}-${surfSpotInfo[6].swell.maxBreakingHeight}ft`}
                       style={{ float: "left" }}
                     />
                     {createStars(
@@ -516,7 +516,7 @@ function Card(props) {
                 <List>
                   <ListItem>
                     <ListItemText
-                      primary={`${surfSpotInfo[7].swell.components.minBreakingHeight}-${surfSpotInfo[7].swell.components.maxBreakingHeight}ft`}
+                      primary={`${surfSpotInfo[7].swell.minBreakingHeight}-${surfSpotInfo[7].swell.maxBreakingHeight}ft`}
                       style={{ float: "left" }}
                     ></ListItemText>
                     {createStars(
@@ -538,7 +538,7 @@ function Card(props) {
                   <ListItem>
                     <ListItemText primary="Secondary Swell" />
                     <ListItemText
-                      primary={`${surfSpotInfo[7].swell.components.secondary.direction}ft at ${surfSpotInfo[7].swell.components.secondary.period}s`}
+                      primary={`${surfSpotInfo[7].swell.components.secondary.height}ft at ${surfSpotInfo[7].swell.components.secondary.period}s`}
                     />
                     <ListItemIcon>
                       {rotateSwellArrow(
@@ -577,7 +577,7 @@ function Card(props) {
                 <List>
                   <ListItem>
                     <ListItemText
-                      primary={`${surfSpotInfo[8].swell.components.minBreakingHeight}-${surfSpotInfo[8].swell.components.maxBreakingHeight}ft`}
+                      primary={`${surfSpotInfo[8].swell.minBreakingHeight}-${surfSpotInfo[8].swell.maxBreakingHeight}ft`}
                       style={{ float: "left" }}
                     ></ListItemText>
                     {createStars(
@@ -588,7 +588,7 @@ function Card(props) {
                   <ListItem>
                     <ListItemText primary="Primary Swell" />
                     <ListItemText
-                      primary={`${surfSpotInfo[8].swell.components.primary.direction}ft at ${surfSpotInfo[8].swell.components.primary.period}s`}
+                      primary={`${surfSpotInfo[8].swell.components.primary.height}ft at ${surfSpotInfo[8].swell.components.primary.period}s`}
                     />
                     <ListItemIcon>
                       {rotateSwellArrow(
@@ -599,7 +599,7 @@ function Card(props) {
                   <ListItem>
                     <ListItemText primary="Secondary Swell" />
                     <ListItemText
-                      primary={`${surfSpotInfo[8].swell.components.secondary.direction}ft at ${surfSpotInfo[8].swell.components.secondary.period}s`}
+                      primary={`${surfSpotInfo[8].swell.components.secondary.height}ft at ${surfSpotInfo[8].swell.components.secondary.period}s`}
                     />
                     <ListItemIcon>
                       {rotateSwellArrow(
