@@ -29,7 +29,7 @@ function App() {
         const response = await data.json();
 
         setSurfSpot(response);
-        console.log(response);
+        
       } catch (err) {
         console.log(err);
       }

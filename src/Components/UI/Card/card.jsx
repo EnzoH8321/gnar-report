@@ -315,7 +315,7 @@ function Card(props) {
                 <List>
                   <ListItem>
                     <ListItemText
-                      primary={`${surfSpotInfo[4].swell.components.minBreakingHeight}-${surfSpotInfo[4].swell.components.maxBreakingHeight}${surfSpotInfo[4].swell.components.unit}`}
+                      primary={`${surfSpotInfo[4].swell.minBreakingHeight}-${surfSpotInfo[4].swell.maxBreakingHeight}${surfSpotInfo[4].swell.components.unit}`}
                       style={{ float: "left" }}
                     />
                     {createStars(
@@ -326,22 +326,22 @@ function Card(props) {
                   <ListItem>
                     <ListItemText primary="Primary Swell" />
                     <ListItemText
-                      primary={`${surfSpotInfo[4].components.primary.height}ft at ${surfSpotInfo[4].components.primary.period}s`}
+                      primary={`${surfSpotInfo[4].swell.components.primary.height}ft at ${surfSpotInfo[4].swell.components.primary.period}s`}
                     />
                     <ListItemIcon>
                       {rotateSwellArrow(
-                        surfSpotInfo[4].components.primary.direction
+                        surfSpotInfo[4].swell.components.primary.direction
                       )}
                     </ListItemIcon>
                   </ListItem>
                   <ListItem>
                     <ListItemText primary="Secondary Swell"></ListItemText>
                     <ListItemText
-                      primary={`${surfSpotInfo[4].components.secondary.height}ft at ${surfSpotInfo[4].components.secondary.period}s`}
+                      primary={`${surfSpotInfo[4].swell.components.secondary.height}ft at ${surfSpotInfo[4].swell.components.secondary.period}s`}
                     />
                     <ListItemIcon>
                       {rotateSwellArrow(
-                        surfSpotInfo[4].components.secondary.direction
+                        surfSpotInfo[4].swell.components.secondary.direction
                       )}
                     </ListItemIcon>
                   </ListItem>
@@ -393,22 +393,22 @@ function Card(props) {
                   <ListItem>
                     <ListItemText primary="Primary Swell" />
                     <ListItemText
-                      primary={`${surfSpotInfo[5].components.primary.height}ft at ${surfSpotInfo[5].components.primary.period}s`}
+                      primary={`${surfSpotInfo[5].swell.components.primary.height}ft at ${surfSpotInfo[5].swell.components.primary.period}s`}
                     />
                     <ListItemIcon>
                       {rotateSwellArrow(
-                        surfSpotInfo[5].components.primary.direction
+                        surfSpotInfo[5].swell.components.primary.direction
                       )}
                     </ListItemIcon>
                   </ListItem>
                   <ListItem>
                     <ListItemText primary="Secondary Swell" />
                     <ListItemText
-                      primary={`${surfSpotInfo[5].components.secondary.height}ft at ${surfSpotInfo[5].components.secondary.period}s `}
+                      primary={`${surfSpotInfo[5].swell.components.secondary.height}ft at ${surfSpotInfo[5].swell.components.secondary.period}s `}
                     />
                     <ListItemIcon>
                       {rotateSwellArrow(
-                        surfSpotInfo[5].components.secondary.direction
+                        surfSpotInfo[5].swell.components.secondary.direction
                       )}
                     </ListItemIcon>
                   </ListItem>
@@ -464,7 +464,7 @@ function Card(props) {
                     />
                     <ListItemIcon>
                       {rotateSwellArrow(
-                        surfSpotInfo[6].components.primary.direction
+                        surfSpotInfo[6].swell.components.primary.direction
                       )}
                     </ListItemIcon>
                   </ListItem>
@@ -475,7 +475,7 @@ function Card(props) {
                     />
                     <ListItemIcon>
                       {rotateSwellArrow(
-                        surfSpotInfo[6].components.secondary.direction
+                        surfSpotInfo[6].swell.components.secondary.direction
                       )}
                     </ListItemIcon>
                   </ListItem>
@@ -531,7 +531,7 @@ function Card(props) {
                     />
                     <ListItemIcon>
                       {rotateSwellArrow(
-                        surfSpotInfo[7].components.primary.direction
+                        surfSpotInfo[7].swell.components.primary.direction
                       )}
                     </ListItemIcon>
                   </ListItem>
@@ -542,7 +542,7 @@ function Card(props) {
                     />
                     <ListItemIcon>
                       {rotateSwellArrow(
-                        surfSpotInfo[7].components.secondary.direction
+                        surfSpotInfo[7].swell.components.secondary.direction
                       )}
                     </ListItemIcon>
                   </ListItem>
@@ -592,7 +592,7 @@ function Card(props) {
                     />
                     <ListItemIcon>
                       {rotateSwellArrow(
-                        surfSpotInfo[8].components.primary.direction
+                        surfSpotInfo[8].swell.components.primary.direction
                       )}
                     </ListItemIcon>
                   </ListItem>
@@ -603,7 +603,7 @@ function Card(props) {
                     />
                     <ListItemIcon>
                       {rotateSwellArrow(
-                        surfSpotInfo[8].components.secondary.direction
+                        surfSpotInfo[8].swell.components.secondary.direction
                       )}
                     </ListItemIcon>
                   </ListItem>
