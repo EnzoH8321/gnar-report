@@ -26,6 +26,10 @@ import "./card.css";
 
 //Get's Time
 function getHours(time) {
+  if (time === undefined) {
+    return;
+  }
+
   const unixTimestamp = time;
 
   const milliseconds = unixTimestamp * 1000;
@@ -41,6 +45,27 @@ function getHours(time) {
   // hours = hours < 10 ? "0" + hours : hours;
 
   return `${hours} ${am_pm}`;
+}
+
+//Find's Day/Month for Card
+
+function getDayMonth(time) {
+  const unixTimestamp = time;
+
+  const milliseconds = unixTimestamp * 1000;
+
+  const dateObject = new Date(milliseconds);
+
+  const day = dateObject.getDate();
+
+  const month = dateObject.getMonth();
+
+  //When it hit's January
+  if (month === 0) {
+    return `1/${day}`;
+  }
+
+  return `${month}/${day}`;
 }
 
 //Checks Weather
@@ -117,7 +142,7 @@ function rotateWindArrow(degrees) {
 //Creates Card
 function Card(props) {
   //State
-  const { pushMap, surfSpotInfo, pushDayMonth } = props;
+  const { pushMap, surfSpotInfo } = props;
 
   console.log(surfSpotInfo);
 

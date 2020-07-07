@@ -7,27 +7,6 @@ import Body from "./Components/Layout/Body/body.jsx";
 
 import "./App.css";
 
-
-
-function getDayMonth(time) {
-  const unixTimestamp = time;
-
-  const milliseconds = unixTimestamp * 1000;
-
-  const dateObject = new Date(milliseconds);
-
-  const day = dateObject.getDate();
-
-  const month = dateObject.getMonth();
-
-  //When it hit's January
-  if (month === 0) {
-    return `1/${day}`;
-  }
-
-  return `${month}/${day}`;
-}
-
 function App() {
   const [spotID, setspotID] = useState("Default");
   const [surfSpot, setSurfSpot] = useState({});
@@ -50,7 +29,7 @@ function App() {
         const response = await data.json();
 
         setSurfSpot(response);
-        console.log(response)
+        console.log(response);
       } catch (err) {
         console.log(err);
       }
