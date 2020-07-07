@@ -52,7 +52,7 @@ function App() {
       <Grid container spacing={2}>
         <Header onHeaderChange={searchCallBackFunction} />
         {/* If latitude is false, do not display body  */}
-        {mapInfo.latitude ? (
+        {surfSpot[0] ? (
           <Body pushSurfSpot={surfSpot} pushMapInfo={mapInfo} />
         ) : (
           <div></div>
