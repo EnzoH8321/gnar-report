@@ -24,12 +24,8 @@ import Drizzle from "../../../Assets/drizzle.svg";
 
 import "./card.css";
 
-//Get's Time
+//Takes UNIX timestamp as an argument and convert's it to an Hour + AM/PM Format
 function getHours(time) {
-  if (time === undefined) {
-    return;
-  }
-
   const unixTimestamp = time;
 
   const milliseconds = unixTimestamp * 1000;
@@ -42,12 +38,11 @@ function getHours(time) {
       : dateObject.getHours();
 
   var am_pm = dateObject.getHours() >= 12 ? "PM" : "AM";
-  // hours = hours < 10 ? "0" + hours : hours;
 
   return `${hours} ${am_pm}`;
 }
 
-//Find's Day/Month for Card
+//Takes UNIX timestamp as an argument and convert's it to a Month + Day Format.
 
 function getDayMonth(time) {
   const unixTimestamp = time;
@@ -60,7 +55,7 @@ function getDayMonth(time) {
 
   const month = dateObject.getMonth();
 
-  //When it hit's January
+  //Make sure when it hit's January, the month is set to [1] instead of [0]
   if (month === 0) {
     return `1/${day}`;
   }
@@ -68,7 +63,7 @@ function getDayMonth(time) {
   return `${month}/${day}`;
 }
 
-//Checks Weather
+//Get's Weather ID property from the API and returns an image based on the property number.
 function weatherCheck(id) {
   switch (id) {
     case "18":
@@ -102,7 +97,7 @@ function weatherCheck(id) {
   }
 }
 
-//Creates Stars
+//Takes the SolidRating/FadedRating props from the API, gives them Star Icon's, then adds them to the Card
 function createStars(solidRating, fadedRating) {
   let rating = [];
 
@@ -121,7 +116,7 @@ function createStars(solidRating, fadedRating) {
   return <div>{rating}</div>;
 }
 
-//Rotates Swell Arrows
+//Takes the Swell Direction property value and rotate's the Icon based on that number.
 function rotateSwellArrow(degrees) {
   return (
     <NavigationIcon
@@ -130,7 +125,7 @@ function rotateSwellArrow(degrees) {
   );
 }
 
-//Rotates Wind Arrows
+//Takes the Wind Direction property value and rotate's the Icon based on that number.
 function rotateWindArrow(degrees) {
   return (
     <ArrowUpwardIcon
@@ -141,6 +136,7 @@ function rotateWindArrow(degrees) {
 
 //Creates Card
 function Card(props) {
+
   //State
   const { pushMap, surfSpotInfo } = props;
 
@@ -167,7 +163,7 @@ function Card(props) {
   //Map Timer
   const [tripDuration, setTripDuration] = useState();
 
-  //Gets Route Info
+  //Gets MapBox Route Info
   useEffect(() => {
     async function getRoute(
       startLongitude,
@@ -200,7 +196,7 @@ function Card(props) {
     pushMap.latitude,
   ]);
 
-  //Sets user Location
+  //Gets user location and uses that Data for the map.
   useEffect(() => {
     setMapInfo({
       latitude: pushMap.latitude,
