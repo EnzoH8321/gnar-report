@@ -136,7 +136,6 @@ function rotateWindArrow(degrees) {
 
 //Creates Card
 function Card(props) {
-
   //State
   const { pushMap, surfSpotInfo } = props;
 
@@ -242,6 +241,7 @@ function Card(props) {
               {...mapInfo}
               onViewportChange={(viewport) => setMapInfo(viewport)}
               height="400px"
+              mapStyle="mapbox://styles/enzoh3423/ckccnec7y0ef11iqpcdyfniyd"
             >
               <PolylineOverlay points={mapRoute}></PolylineOverlay>
               <GeolocateControl
