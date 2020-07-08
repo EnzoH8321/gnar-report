@@ -3,7 +3,6 @@ import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 
 import SearchBar from "../../UI/SearchBar/search-bar.jsx";
-import DateBox from "../../UI/Date/date.jsx";
 
 import "./header.jsx";
 
@@ -11,7 +10,6 @@ function Header(props) {
   const [location, setLocation] = useState("Default");
 
   function callBackFunction(childData) {
-    //Sets location to the title value
     setLocation(childData);
   }
 
@@ -20,8 +18,7 @@ function Header(props) {
       <p>Type in where you want to go, see if you should</p>
       <h1>Gnar Report</h1>
       <SearchBar parentCallback={callBackFunction} />
-      {/* <p>Where are you going</p>
-      <DateBox /> */}
+
       <Button
         variant="contained"
         color="primary"
