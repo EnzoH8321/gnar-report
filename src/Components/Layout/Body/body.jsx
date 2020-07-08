@@ -7,7 +7,7 @@ import "./body.css";
 function Body(props) {
   const { pushSurfSpot, pushMapInfo } = props;
 
-  return <Card pushMap={pushMapInfo} surfSpotInfo={pushSurfSpot}  />;
+  return <Card pushMap={pushMapInfo} surfSpotInfo={pushSurfSpot} />;
 }
 
 export default Body;

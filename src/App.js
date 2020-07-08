@@ -19,7 +19,7 @@ function App() {
     zoom: 10,
   });
 
-  //For MSW API
+  //Calls the MSW API for surf spot data
   useEffect(() => {
     async function fetchData() {
       try {

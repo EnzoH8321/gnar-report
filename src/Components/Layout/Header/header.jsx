@@ -11,17 +11,15 @@ function Header(props) {
   const [location, setLocation] = useState("Default");
 
   function callBackFunction(childData) {
-    //Sets location to the title value
     setLocation(childData);
   }
 
   return (
     <Grid item xs={12} align="center">
-      <p>Type in where you want to go, see if you should</p>
+      <p>Type in where you want to go, See if you should</p>
       <h1>Gnar Report</h1>
       <SearchBar parentCallback={callBackFunction} />
-      {/* <p>Where are you going</p>
-      <DateBox /> */}
+
       <Button
         variant="contained"
         color="primary"

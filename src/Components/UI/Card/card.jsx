@@ -136,11 +136,8 @@ function rotateWindArrow(degrees) {
 
 //Creates Card
 function Card(props) {
-
   //State
   const { pushMap, surfSpotInfo } = props;
-
-  console.log(surfSpotInfo);
 
   //Coordinates of the surf spot
   const [mapInfo, setMapInfo] = useState({
@@ -179,6 +176,7 @@ function Card(props) {
 
         setMapRoute(response.routes[0].geometry.coordinates);
         setTripDuration(Math.floor(response.routes[0].duration / 60));
+        console.log(response);
       } catch (err) {
         console.log(err);
       }
