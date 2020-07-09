@@ -134,12 +134,22 @@ function rotateWindArrow(degrees) {
   );
 }
 
+function createTurnInstructions(directionArray) {
+  if (directionArray === undefined) {
+    return;
+  }
+
+  let steps = directionArray;
+
+  return steps.map((ele) => (
+    <ListItemText primary={ele.maneuver.instruction}></ListItemText>
+  ));
+}
+
 //Creates Card
 function Card(props) {
   //State
   const { pushMap, surfSpotInfo } = props;
-
-  console.log(surfSpotInfo);
 
   //Coordinates of the surf spot
   const [mapInfo, setMapInfo] = useState({
@@ -162,6 +172,9 @@ function Card(props) {
   //Map Timer
   const [tripDuration, setTripDuration] = useState();
 
+  //Turn Instruction
+  const [turnInstruction, setTurnInstructions] = useState();
+
   //Gets MapBox Route Info
   useEffect(() => {
     async function getRoute(
@@ -178,6 +191,9 @@ function Card(props) {
 
         setMapRoute(response.routes[0].geometry.coordinates);
         setTripDuration(Math.floor(response.routes[0].duration / 60));
+        setTurnInstructions(response.routes[0].legs[0].steps);
+        // console.log(response.routes[0].legs[0].steps);
+        // console.log(response);
       } catch (err) {
         console.log(err);
       }
@@ -233,6 +249,7 @@ function Card(props) {
             <h1>Traffic Report</h1>
             <h2>Time to Destination:</h2>
             <h2>{tripDuration} Minutes</h2>
+            <List dense={true}>{createTurnInstructions(turnInstruction)}</List>
           </Grid>
 
           <Grid item xs={12} style={{}} className="MapBox">

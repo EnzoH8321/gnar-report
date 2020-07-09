@@ -8,6 +8,6 @@
 
 .Card-Item:hover {
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.45);
-  background-color: #ffcc80;
+  background-color: #dce775;
   transform: scale(1.1);
 }
