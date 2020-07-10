@@ -11,6 +11,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import NavigationIcon from "@material-ui/icons/Navigation";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
+import Popper from "@material-ui/core/Popper";
 
 import ReactMapGL, { Marker, GeolocateControl } from "react-map-gl";
 import PolylineOverlay from "../Card/overlay.jsx";
@@ -23,6 +24,7 @@ import CloudyNew from "../../../Assets/cloudynew.svg";
 import Drizzle from "../../../Assets/drizzle.svg";
 
 import "./card.css";
+import { Button } from "@material-ui/core";
 
 //Takes UNIX timestamp as an argument and convert's it to an Hour + AM/PM Format
 function getHours(time) {
@@ -175,6 +177,9 @@ function Card(props) {
   //Turn Instruction
   const [turnInstruction, setTurnInstructions] = useState();
 
+  //Show's Turn Instructions
+  const [popper, setPopper] = useState(null);
+
   //Gets MapBox Route Info
   useEffect(() => {
     async function getRoute(
@@ -249,7 +254,24 @@ function Card(props) {
             <h1>Traffic Report</h1>
             <h2>Time to Destination:</h2>
             <h2>{tripDuration} Minutes</h2>
-            <List dense={true}>{createTurnInstructions(turnInstruction)}</List>
+            <Button
+              variant="contained"
+              color="primary"
+              style={{ margin: "20px" }}
+              onClick={(event) =>
+                setPopper(popper ? null : event.currentTarget)
+              }
+            >
+              Show Directions
+            </Button>
+            <Popper
+              open={popper}
+              anchorEl={popper}
+              style={{ marginTop: "15px" }}
+            >
+              List
+            </Popper>
+            {/* <List dense={true}>{createTurnInstructions(turnInstruction)}</List> */}
           </Grid>
 
           <Grid item xs={12} style={{}} className="MapBox">
