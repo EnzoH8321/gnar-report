@@ -12,6 +12,8 @@ import NavigationIcon from "@material-ui/icons/Navigation";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
 import Popper from "@material-ui/core/Popper";
+import { Button } from "@material-ui/core";
+import ArrowRightIcon from "@material-ui/icons/ArrowRight";
 
 import ReactMapGL, { Marker, GeolocateControl } from "react-map-gl";
 import PolylineOverlay from "../Card/overlay.jsx";
@@ -24,7 +26,6 @@ import CloudyNew from "../../../Assets/cloudynew.svg";
 import Drizzle from "../../../Assets/drizzle.svg";
 
 import "./card.css";
-import { Button } from "@material-ui/core";
 
 //Takes UNIX timestamp as an argument and convert's it to an Hour + AM/PM Format
 function getHours(time) {
@@ -144,7 +145,10 @@ function createTurnInstructions(directionArray) {
   let steps = directionArray;
 
   return steps.map((ele) => (
-    <ListItemText primary={ele.maneuver.instruction}></ListItemText>
+    <ListItem>
+      <ArrowRightIcon></ArrowRightIcon>
+      <ListItemText primary={`${ele.maneuver.instruction}`}></ListItemText>
+    </ListItem>
   ));
 }
 
@@ -178,7 +182,7 @@ function Card(props) {
   const [turnInstruction, setTurnInstructions] = useState();
 
   //Show's Turn Instructions
-  const [popper, setPopper] = useState(null);
+  const [popper, setPopper] = useState();
 
   //Gets MapBox Route Info
   useEffect(() => {
@@ -197,8 +201,6 @@ function Card(props) {
         setMapRoute(response.routes[0].geometry.coordinates);
         setTripDuration(Math.floor(response.routes[0].duration / 60));
         setTurnInstructions(response.routes[0].legs[0].steps);
-        // console.log(response.routes[0].legs[0].steps);
-        // console.log(response);
       } catch (err) {
         console.log(err);
       }
@@ -267,9 +269,23 @@ function Card(props) {
             <Popper
               open={popper}
               anchorEl={popper}
-              style={{ marginTop: "15px" }}
+              style={{
+                marginTop: "15px",
+                boxShadow:
+                  "0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)",
+                backgroundColor: "white",
+                borderRadius: "16px",
+                borderTop: "none",
+                padding: "15px",
+              }}
+              modifiers={{
+                flip: {
+                  enabled: false,
+                },
+              }}
+              placement="bottom"
             >
-              List
+              {createTurnInstructions(turnInstruction)}
             </Popper>
             {/* <List dense={true}>{createTurnInstructions(turnInstruction)}</List> */}
           </Grid>
