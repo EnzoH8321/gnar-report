@@ -302,7 +302,7 @@ function Card(props) {
             </Popper>
           </Grid>
 
-          <Grid item xs={12} style={{}} className="MapBox">
+          <Grid item xs={12} className="MapBox">
             <ReactMapGL
               mapboxApiAccessToken={process.env.REACT_APP_MAPBOX}
               {...mapInfo}
@@ -633,7 +633,14 @@ function Card(props) {
           </Grid>
 
           {/* Fifth Cell */}
-          <Grid container item xs={12} className="Card-Item">
+          <Grid
+            container
+            item
+            xs={12}
+            className={
+              smallTablet ? "Phone-VersionCard Card-Item" : "Card-Item"
+            }
+          >
             <Grid item xs={6}>
               <p>{getHours(surfSpotInfo[8].localTimestamp)}</p>
               <img
@@ -644,7 +651,7 @@ function Card(props) {
               ></img>
               <p>{surfSpotInfo[8].condition.temperature + "f"}</p>
             </Grid>
-            <Grid container item xs={6}>
+            <Grid container item xs={smallTablet ? 12 : 8}>
               <Grid item xs={12}>
                 <List>
                   <ListItem>
