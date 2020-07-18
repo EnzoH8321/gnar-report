@@ -237,7 +237,7 @@ function Card(props) {
   const phoneSize = useMediaQuery("(max-width:500px)");
 
   return (
-    <Box className="Box">
+    <Box>
       <Grid
         item
         container
@@ -362,7 +362,7 @@ function Card(props) {
             item
             xs={6}
             style={{ maxWidth: "49.5%" }}
-            className={smallTablet ? "Card-Item SmallTablet-Version" : "none"}
+            className={"Card-Item"}
           >
             <Grid item xs={4}>
               <p>{getHours(surfSpotInfo[4].localTimestamp)}</p>

@@ -24,11 +24,5 @@
 }
 
 .SmallTablet-Version {
-  display: block !important;
-  max-width: 100% !important;
-}
-
-.PhoneSize-Version {
-  display: block !important;
   max-width: 100% !important;
 }
