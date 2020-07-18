@@ -651,7 +651,7 @@ function Card(props) {
               ></img>
               <p>{surfSpotInfo[8].condition.temperature + "f"}</p>
             </Grid>
-            <Grid container item xs={smallTablet ? 12 : 8}>
+            <Grid container item xs={smallTablet ? 12 : 6}>
               <Grid item xs={12}>
                 <List>
                   <ListItem>
