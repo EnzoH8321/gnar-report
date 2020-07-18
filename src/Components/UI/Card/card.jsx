@@ -555,7 +555,7 @@ function Card(props) {
           </Grid>
 
           {/* Fifth Cell */}
-          <Grid container item xs={12} style={{}} className="Card-Item">
+          <Grid container item xs={12} className="Card-Item">
             <Grid item xs={6}>
               <p>{getHours(surfSpotInfo[8].localTimestamp)}</p>
               <img
