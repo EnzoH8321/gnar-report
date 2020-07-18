@@ -19,10 +19,16 @@
   max-width: 100% !important;
 }
 
-.Tablet-VersionSR {
+.Tablet-VersionSR > * {
+  display: block !important;
   max-width: 100% !important;
 }
 
 .SmallTablet-Version {
+  max-width: 100% !important;
+}
+
+.Phone-VersionCard {
+  display: block !important;
   max-width: 100% !important;
 }

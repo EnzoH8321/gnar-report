@@ -346,12 +346,11 @@ function Card(props) {
         <Grid
           item
           container
-          xs={9}
+          xs={12}
           style={{ padding: "15px 15px" }}
           justify={"space-between"}
-          className={tabletSize ? "Tablet-VersionSR" : "none"}
         >
-          <Grid item xs={12} style={{}}>
+          <Grid item xs={12}>
             <h1>Surf Report</h1>
             <h3>{getDayMonth(surfSpotInfo[4].localTimestamp)}</h3>
           </Grid>
@@ -360,9 +359,11 @@ function Card(props) {
           <Grid
             container
             item
-            xs={6}
+            xs={smallTablet ? 12 : 6}
             style={{ maxWidth: "49.5%" }}
-            className={"Card-Item"}
+            className={
+              smallTablet ? "Phone-VersionCard Card-Item" : "Card-Item"
+            }
           >
             <Grid item xs={4}>
               <p>{getHours(surfSpotInfo[4].localTimestamp)}</p>
@@ -374,7 +375,7 @@ function Card(props) {
               ></img>
               <p>{surfSpotInfo[4].condition.temperature + "f"}</p>
             </Grid>
-            <Grid container item xs={8}>
+            <Grid container item xs={smallTablet ? 12 : 8}>
               <Grid item xs={12}>
                 <List>
                   <ListItem>
@@ -424,12 +425,15 @@ function Card(props) {
           </Grid>
 
           {/* Second Cell */}
+
           <Grid
             container
             item
-            xs={6}
+            xs={smallTablet ? 12 : 6}
             style={{ maxWidth: "49.5%" }}
-            className="Card-Item"
+            className={
+              smallTablet ? "Phone-VersionCard Card-Item" : "Card-Item"
+            }
           >
             <Grid item xs={4}>
               <p>{getHours(surfSpotInfo[5].localTimestamp)}</p>
@@ -441,7 +445,7 @@ function Card(props) {
               ></img>
               <p>{surfSpotInfo[5].condition.temperature + "f"}</p>
             </Grid>
-            <Grid container item xs={8}>
+            <Grid container item xs={smallTablet ? 12 : 8}>
               <Grid item xs={12}>
                 <List>
                   <ListItem>
@@ -494,9 +498,11 @@ function Card(props) {
           <Grid
             container
             item
-            xs={6}
+            xs={smallTablet ? 12 : 6}
             style={{ maxWidth: "49.5%" }}
-            className="Card-Item"
+            className={
+              smallTablet ? "Phone-VersionCard Card-Item" : "Card-Item"
+            }
           >
             <Grid item xs={4}>
               <p>{getHours(surfSpotInfo[6].localTimestamp)}</p>
@@ -508,7 +514,7 @@ function Card(props) {
               ></img>
               <p>{surfSpotInfo[6].condition.temperature + "f"}</p>
             </Grid>
-            <Grid container item xs={8}>
+            <Grid container item xs={smallTablet ? 12 : 8}>
               <Grid item xs={12}>
                 <List>
                   <ListItem>
@@ -561,9 +567,11 @@ function Card(props) {
           <Grid
             container
             item
-            xs={6}
+            xs={smallTablet ? 12 : 6}
             style={{ maxWidth: "49.5%" }}
-            className="Card-Item"
+            className={
+              smallTablet ? "Phone-VersionCard Card-Item" : "Card-Item"
+            }
           >
             <Grid item xs={4}>
               <p>{getHours(surfSpotInfo[7].localTimestamp)}</p>
@@ -575,7 +583,7 @@ function Card(props) {
               ></img>
               <p>{surfSpotInfo[7].condition.temperature + "f"}</p>
             </Grid>
-            <Grid container item xs={8}>
+            <Grid container item xs={smallTablet ? 12 : 8}>
               <Grid item xs={12}>
                 <List>
                   <ListItem>
@@ -625,7 +633,7 @@ function Card(props) {
           </Grid>
 
           {/* Fifth Cell */}
-          <Grid container item xs={12} style={{}} className="Card-Item">
+          <Grid container item xs={12} className="Card-Item">
             <Grid item xs={6}>
               <p>{getHours(surfSpotInfo[8].localTimestamp)}</p>
               <img
