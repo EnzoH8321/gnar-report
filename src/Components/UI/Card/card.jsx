@@ -233,6 +233,8 @@ function Card(props) {
 
   //Media Queries
   const tabletSize = useMediaQuery("(max-width:1400px)");
+  const smallTablet = useMediaQuery("(max-width:1000px)");
+  const phoneSize = useMediaQuery("(max-width:500px)");
 
   return (
     <Box className="Box">
@@ -240,7 +242,7 @@ function Card(props) {
         item
         container
         xs={12}
-        className={tabletSize ? "Mobile-VersionTR" : "none"}
+        className={tabletSize ? "Tablet-VersionTR" : "none"}
         style={{
           padding: "15px 15px",
           backgroundColor: "white",
@@ -255,7 +257,7 @@ function Card(props) {
           item
           container
           xs={3}
-          className={tabletSize ? "Mobile-VersionTR " : "none"}
+          className={tabletSize ? "Tablet-VersionTR " : "none"}
         >
           <Grid
             item
@@ -347,7 +349,7 @@ function Card(props) {
           xs={9}
           style={{ padding: "15px 15px" }}
           justify={"space-between"}
-          className={tabletSize ? "Mobile-VersionSR" : "none"}
+          className={tabletSize ? "Tablet-VersionSR" : "none"}
         >
           <Grid item xs={12} style={{}}>
             <h1>Surf Report</h1>
@@ -360,7 +362,7 @@ function Card(props) {
             item
             xs={6}
             style={{ maxWidth: "49.5%" }}
-            className="Card-Item"
+            className={smallTablet ? "Card-Item SmallTablet-Version" : "none"}
           >
             <Grid item xs={4}>
               <p>{getHours(surfSpotInfo[4].localTimestamp)}</p>

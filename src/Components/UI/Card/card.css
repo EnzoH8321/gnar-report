@@ -14,11 +14,21 @@
   z-index: 1;
 }
 
-.Mobile-VersionTR {
+.Tablet-VersionTR {
   display: block !important;
   max-width: 100% !important;
 }
 
-.Mobile-VersionSR {
+.Tablet-VersionSR {
+  max-width: 100% !important;
+}
+
+.SmallTablet-Version {
+  display: block !important;
+  max-width: 100% !important;
+}
+
+.PhoneSize-Version {
+  display: block !important;
   max-width: 100% !important;
 }
