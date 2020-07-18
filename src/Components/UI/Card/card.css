@@ -10,4 +10,15 @@
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.45);
   background-color: #dce775;
   transform: scale(1.1);
+  transition-duration: 0s;
+  z-index: 1;
+}
+
+.Mobile-VersionTR {
+  display: block !important;
+  max-width: 100% !important;
+}
+
+.Mobile-VersionSR {
+  max-width: 100% !important;
 }

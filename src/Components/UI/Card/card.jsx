@@ -15,6 +15,8 @@ import Popper from "@material-ui/core/Popper";
 import { Button } from "@material-ui/core";
 import ArrowRightIcon from "@material-ui/icons/ArrowRight";
 
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+
 import ReactMapGL, { Marker, GeolocateControl } from "react-map-gl";
 import PolylineOverlay from "../Card/overlay.jsx";
 
@@ -229,13 +231,16 @@ function Card(props) {
     });
   }, [pushMap.latitude, pushMap.longitude]);
 
+  //Media Queries
+  const tabletSize = useMediaQuery("(max-width:1400px)");
+
   return (
     <Box className="Box">
       <Grid
         item
         container
         xs={12}
-        className="Main-Grid"
+        className={tabletSize ? "Mobile-VersionTR" : "none"}
         style={{
           padding: "15px 15px",
           backgroundColor: "white",
@@ -246,7 +251,12 @@ function Card(props) {
           borderRadius: "16px",
         }}
       >
-        <Grid item container xs={3}>
+        <Grid
+          item
+          container
+          xs={3}
+          className={tabletSize ? "Mobile-VersionTR " : "none"}
+        >
           <Grid
             item
             xs={12}
@@ -277,6 +287,7 @@ function Card(props) {
                 borderRadius: "16px",
                 borderTop: "none",
                 padding: "15px",
+                zIndex: "2",
               }}
               modifiers={{
                 flip: {
@@ -287,7 +298,6 @@ function Card(props) {
             >
               {createTurnInstructions(turnInstruction)}
             </Popper>
-            {/* <List dense={true}>{createTurnInstructions(turnInstruction)}</List> */}
           </Grid>
 
           <Grid item xs={12} style={{}} className="MapBox">
@@ -337,6 +347,7 @@ function Card(props) {
           xs={9}
           style={{ padding: "15px 15px" }}
           justify={"space-between"}
+          className={tabletSize ? "Mobile-VersionSR" : "none"}
         >
           <Grid item xs={12} style={{}}>
             <h1>Surf Report</h1>
