@@ -3,7 +3,6 @@ import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 
 import SearchBar from "../../UI/SearchBar/search-bar.jsx";
-import DateBox from "../../UI/Date/date.jsx";
 
 import "./header.jsx";
 

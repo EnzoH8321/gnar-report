@@ -11,6 +11,11 @@ import ListItemText from "@material-ui/core/ListItemText";
 import NavigationIcon from "@material-ui/icons/Navigation";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
+import Popper from "@material-ui/core/Popper";
+import { Button } from "@material-ui/core";
+import ArrowRightIcon from "@material-ui/icons/ArrowRight";
+
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 import ReactMapGL, { Marker, GeolocateControl } from "react-map-gl";
 import PolylineOverlay from "../Card/overlay.jsx";
@@ -134,6 +139,21 @@ function rotateWindArrow(degrees) {
   );
 }
 
+function createTurnInstructions(directionArray) {
+  if (directionArray === undefined) {
+    return;
+  }
+
+  let steps = directionArray;
+
+  return steps.map((ele) => (
+    <ListItem>
+      <ArrowRightIcon></ArrowRightIcon>
+      <ListItemText primary={`${ele.maneuver.instruction}`}></ListItemText>
+    </ListItem>
+  ));
+}
+
 //Creates Card
 function Card(props) {
   //State
@@ -160,6 +180,12 @@ function Card(props) {
   //Map Timer
   const [tripDuration, setTripDuration] = useState();
 
+  //Turn Instruction
+  const [turnInstruction, setTurnInstructions] = useState();
+
+  //Show's Turn Instructions
+  const [popper, setPopper] = useState();
+
   //Gets MapBox Route Info
   useEffect(() => {
     async function getRoute(
@@ -176,7 +202,11 @@ function Card(props) {
 
         setMapRoute(response.routes[0].geometry.coordinates);
         setTripDuration(Math.floor(response.routes[0].duration / 60));
+<<<<<<< HEAD
         console.log(response);
+=======
+        setTurnInstructions(response.routes[0].legs[0].steps);
+>>>>>>> test
       } catch (err) {
         console.log(err);
       }
@@ -205,13 +235,18 @@ function Card(props) {
     });
   }, [pushMap.latitude, pushMap.longitude]);
 
+  //Media Queries
+  const tabletSize = useMediaQuery("(max-width:1400px)");
+  const smallTablet = useMediaQuery("(max-width:1000px)");
+  const phoneSize = useMediaQuery("(max-width:500px)");
+
   return (
-    <Box className="Box">
+    <Box>
       <Grid
         item
         container
         xs={12}
-        className="Main-Grid"
+        className={tabletSize ? "Tablet-VersionTR" : "none"}
         style={{
           padding: "15px 15px",
           backgroundColor: "white",
@@ -222,7 +257,12 @@ function Card(props) {
           borderRadius: "16px",
         }}
       >
-        <Grid item container xs={3}>
+        <Grid
+          item
+          container
+          xs={3}
+          className={tabletSize ? "Tablet-VersionTR " : "none"}
+        >
           <Grid
             item
             xs={12}
@@ -232,14 +272,47 @@ function Card(props) {
             <h1>Traffic Report</h1>
             <h2>Time to Destination:</h2>
             <h2>{tripDuration} Minutes</h2>
+            <Button
+              variant="contained"
+              color="primary"
+              style={{ margin: "20px" }}
+              onClick={(event) =>
+                setPopper(popper ? null : event.currentTarget)
+              }
+            >
+              Show Directions
+            </Button>
+            <Popper
+              open={popper}
+              anchorEl={popper}
+              style={{
+                marginTop: "15px",
+                boxShadow:
+                  "0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)",
+                backgroundColor: "white",
+                borderRadius: "16px",
+                borderTop: "none",
+                padding: "15px",
+                zIndex: "2",
+              }}
+              modifiers={{
+                flip: {
+                  enabled: false,
+                },
+              }}
+              placement="bottom"
+            >
+              {createTurnInstructions(turnInstruction)}
+            </Popper>
           </Grid>
 
-          <Grid item xs={12} style={{}} className="MapBox">
+          <Grid item xs={12} className="MapBox">
             <ReactMapGL
               mapboxApiAccessToken={process.env.REACT_APP_MAPBOX}
               {...mapInfo}
               onViewportChange={(viewport) => setMapInfo(viewport)}
               height="400px"
+              mapStyle="mapbox://styles/enzoh3423/ckccnec7y0ef11iqpcdyfniyd"
             >
               <PolylineOverlay points={mapRoute}></PolylineOverlay>
               <GeolocateControl
@@ -277,11 +350,11 @@ function Card(props) {
         <Grid
           item
           container
-          xs={9}
+          xs={tabletSize ? 12 : 9}
           style={{ padding: "15px 15px" }}
           justify={"space-between"}
         >
-          <Grid item xs={12} style={{}}>
+          <Grid item xs={12}>
             <h1>Surf Report</h1>
             <h3>{getDayMonth(surfSpotInfo[4].localTimestamp)}</h3>
           </Grid>
@@ -290,9 +363,11 @@ function Card(props) {
           <Grid
             container
             item
-            xs={6}
+            xs={smallTablet ? 12 : 6}
             style={{ maxWidth: "49.5%" }}
-            className="Card-Item"
+            className={
+              smallTablet ? "Phone-VersionCard Card-Item" : "Card-Item"
+            }
           >
             <Grid item xs={4}>
               <p>{getHours(surfSpotInfo[4].localTimestamp)}</p>
@@ -304,7 +379,7 @@ function Card(props) {
               ></img>
               <p>{surfSpotInfo[4].condition.temperature + "f"}</p>
             </Grid>
-            <Grid container item xs={8}>
+            <Grid container item xs={smallTablet ? 12 : 8}>
               <Grid item xs={12}>
                 <List>
                   <ListItem>
@@ -354,12 +429,15 @@ function Card(props) {
           </Grid>
 
           {/* Second Cell */}
+
           <Grid
             container
             item
-            xs={6}
+            xs={smallTablet ? 12 : 6}
             style={{ maxWidth: "49.5%" }}
-            className="Card-Item"
+            className={
+              smallTablet ? "Phone-VersionCard Card-Item" : "Card-Item"
+            }
           >
             <Grid item xs={4}>
               <p>{getHours(surfSpotInfo[5].localTimestamp)}</p>
@@ -371,7 +449,7 @@ function Card(props) {
               ></img>
               <p>{surfSpotInfo[5].condition.temperature + "f"}</p>
             </Grid>
-            <Grid container item xs={8}>
+            <Grid container item xs={smallTablet ? 12 : 8}>
               <Grid item xs={12}>
                 <List>
                   <ListItem>
@@ -424,9 +502,11 @@ function Card(props) {
           <Grid
             container
             item
-            xs={6}
+            xs={smallTablet ? 12 : 6}
             style={{ maxWidth: "49.5%" }}
-            className="Card-Item"
+            className={
+              smallTablet ? "Phone-VersionCard Card-Item" : "Card-Item"
+            }
           >
             <Grid item xs={4}>
               <p>{getHours(surfSpotInfo[6].localTimestamp)}</p>
@@ -438,7 +518,7 @@ function Card(props) {
               ></img>
               <p>{surfSpotInfo[6].condition.temperature + "f"}</p>
             </Grid>
-            <Grid container item xs={8}>
+            <Grid container item xs={smallTablet ? 12 : 8}>
               <Grid item xs={12}>
                 <List>
                   <ListItem>
@@ -491,9 +571,11 @@ function Card(props) {
           <Grid
             container
             item
-            xs={6}
+            xs={smallTablet ? 12 : 6}
             style={{ maxWidth: "49.5%" }}
-            className="Card-Item"
+            className={
+              smallTablet ? "Phone-VersionCard Card-Item" : "Card-Item"
+            }
           >
             <Grid item xs={4}>
               <p>{getHours(surfSpotInfo[7].localTimestamp)}</p>
@@ -505,7 +587,7 @@ function Card(props) {
               ></img>
               <p>{surfSpotInfo[7].condition.temperature + "f"}</p>
             </Grid>
-            <Grid container item xs={8}>
+            <Grid container item xs={smallTablet ? 12 : 8}>
               <Grid item xs={12}>
                 <List>
                   <ListItem>
@@ -555,7 +637,18 @@ function Card(props) {
           </Grid>
 
           {/* Fifth Cell */}
+<<<<<<< HEAD
           <Grid container item xs={12} className="Card-Item">
+=======
+          <Grid
+            container
+            item
+            xs={12}
+            className={
+              smallTablet ? "Phone-VersionCard Card-Item" : "Card-Item"
+            }
+          >
+>>>>>>> test
             <Grid item xs={6}>
               <p>{getHours(surfSpotInfo[8].localTimestamp)}</p>
               <img
@@ -566,7 +659,7 @@ function Card(props) {
               ></img>
               <p>{surfSpotInfo[8].condition.temperature + "f"}</p>
             </Grid>
-            <Grid container item xs={6}>
+            <Grid container item xs={smallTablet ? 12 : 6}>
               <Grid item xs={12}>
                 <List>
                   <ListItem>
