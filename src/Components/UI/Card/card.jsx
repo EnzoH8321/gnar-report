@@ -202,11 +202,7 @@ function Card(props) {
 
         setMapRoute(response.routes[0].geometry.coordinates);
         setTripDuration(Math.floor(response.routes[0].duration / 60));
-<<<<<<< HEAD
         console.log(response);
-=======
-        setTurnInstructions(response.routes[0].legs[0].steps);
->>>>>>> test
       } catch (err) {
         console.log(err);
       }
