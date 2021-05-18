@@ -346,7 +346,7 @@ function Card(props) {
         <Grid
           item
           container
-          xs={9}
+          xs={tabletSize ? 12 : 9}
           style={{ padding: "15px 15px" }}
           justify={"space-between"}
         >
