@@ -28,8 +28,6 @@ function App() {
         const data = await fetch(proxyURL + realURL);
         const response = await data.json();
 
-        console.log(response);
-
         setSurfSpot(response);
       } catch (err) {
         console.log(err);
