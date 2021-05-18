@@ -23,7 +23,7 @@ function App() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const proxyURL = "https://rocky-wave-70691.herokuapp.com/ ";
+        // const proxyURL = "https://rocky-wave-70691.herokuapp.com/ ";
         const realURL = `http://magicseaweed.com/api/${process.env.REACT_APP_MSW}/forecast/?spot_id=${spotID.id}&units=us&fields=timestamp,fadedRating,localTimestamp,solidRating,condition.*,swell.*, wind.*`;
         const data = await fetch(proxyURL + realURL);
         const response = await data.json();
