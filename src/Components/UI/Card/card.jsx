@@ -633,18 +633,7 @@ function Card(props) {
           </Grid>
 
           {/* Fifth Cell */}
-<<<<<<< HEAD
           <Grid container item xs={12} className="Card-Item">
-=======
-          <Grid
-            container
-            item
-            xs={12}
-            className={
-              smallTablet ? "Phone-VersionCard Card-Item" : "Card-Item"
-            }
-          >
->>>>>>> test
             <Grid item xs={6}>
               <p>{getHours(surfSpotInfo[8].localTimestamp)}</p>
               <img
