@@ -9,4 +9,7 @@ To Run:
 Check it out here - https://enzoh8321.github.io/gnar-report/
 
 
+
 ## This project is currently not being maintained.
+
+Due to time constraints and life changes, I am not able to maintain this project to the best of my abilities. I will leave the CORS proxy up so feel free to use it in your own project (It is own a free-tier Heroku dyno so hopefully it wont be pinged too hard :)). 
