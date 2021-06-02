@@ -48,7 +48,7 @@ function App() {
 
   return (
     <div className="App">
-      <Grid container spacing={2}>
+      <Grid container spacing={2} style={{ justifyContent: "center" }}>
         <Header onHeaderChange={searchCallBackFunction} />
         {/* If latitude is false, do not display body  */}
         {surfSpot[0] ? (
